@@ -7,7 +7,7 @@ sys.setdefaultencoding("utf-8")
 
 ##############################
 """
-Terimakasih Untuk Semuanya !!!
+Kontol amanda bengkok ke kiri !!!
                            """
 ##############################
 
@@ -88,7 +88,7 @@ def __login__():
 			exit("%s«%s!%s Sepertinya ada yang salah"%(K,M,K))
 	elif __login in ['3','03']:
 		print("%s«%s!%s Anda akan diarahkan ke browser"%(K,M,P));time.sleep(2)
-		os.system("xdg-open https://youtu.be/3Y6xsMB3wRg");exit()
+		os.system("xdg-open https://youtu.be/loF5goP0Co4");exit()
 	elif __login in ['4','04']:
 		exit()
 	else:
@@ -383,12 +383,28 @@ def generate(text):
 				results.append(i+"1234")
 				results.append(i+"12345")
 				results.append(i+"123456")
+				results.append(i+"2000")
+				results.append(i+"2001")
+				results.append(i+"2002")
+				results.append(i+"2003")
+				results.append(i+"2004")
+				results.append(i+"2005")
+				results.append(i+"2006")
+				results.append(i+"2007")
 			else:
 				results.append(text)
 				results.append(i+"123")
 				results.append(i+"1234")
 				results.append(i+"12345")
 				results.append(i+"123456")
+				results.append(i+"2000")
+				results.append(i+"2001")
+				results.append(i+"2002")
+				results.append(i+"2003")
+				results.append(i+"2004")
+				results.append(i+"2005")
+				results.append(i+"2006")
+				results.append(i+"2007")
 				if "slow" in __set__:
 					results.append("sayang")
 					results.append("anjing")
