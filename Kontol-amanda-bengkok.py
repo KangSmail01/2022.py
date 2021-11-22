@@ -522,7 +522,7 @@ class __crack__:
 				self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
 	                except Exception as e:
 				exit("%sÂ«%s!%s File tidak valid"%(K,M,K))
-		print("%sÂ«%s!%s Mainkan mode pesawat jika tidak ada hasil\n"%(H,M,P))
+		print("%sÂ«%s!%s Kontol Amanda besar banget!!!!\n"%(H,M,P))
                 ThreadPool(35).map(self.main,self.fl)
                	exit("\n%sÂ«%sSelesai%sÂ»"%(H,P,H))
 	def main(self,fl):
