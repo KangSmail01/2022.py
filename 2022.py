@@ -26,9 +26,9 @@ logo = ("""\x1b[1;92m ___ ___ ___ __  __ ___ _   _ __  __
 \x1b[1;96m|  _/   / _|| |\/| || || |_| | |\/| |
 \x1b[1;96m|_| |_|_\___|_|  |_|___|\___/|_|  |_|
 \x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m--------------------------
-\x1b[1;95m[\x1b[1;97m-->x1b[1;95m]\x1b[1;97m au : KangSmail
-\x1b[1;95m[\x1b[1;97m-->x1b[1;95m]\x1b[1;97m fb : fb.com/rozhak.xyz
-\x1b[1;95m[\x1b[1;97m-->x1b[1;95m]\x1b[1;97m gh : github.com/KangSmail01
+\x1b[1;95m[\x1b[1;97m-->\x1b[1;95m]\x1b[1;97m au : KangSmail
+\x1b[1;95m[\x1b[1;97m-->\x1b[1;95m]\x1b[1;97m fb : fb.com/rozhak.xyz
+\x1b[1;95m[\x1b[1;97m-->\x1b[1;95m]\x1b[1;97m gh : github.com/KangSmail01
 \x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m--------------------------
 """)
 url=('http://ipinfo.io/json')
